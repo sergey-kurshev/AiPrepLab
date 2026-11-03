@@ -1,0 +1,7 @@
+# Everything runs on CPU. For a CUDA build of PyTorch, follow the selector at
+# https://pytorch.org/get-started/locally/ instead of installing plain `torch`.
+torch>=2.1
+numpy>=1.24
+# Only needed to open the generated notebooks; the .py exercises run without it.
+jupyter>=1.0
+matplotlib>=3.7
