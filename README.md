@@ -1,14 +1,23 @@
-# AI Research Engineer — Interview Preparation Course
+# AI Research Engineer — Interview Preparation Lab
 
-A course built for one purpose: passing the technical and coding interviews at an AI research
-lab. Eleven self-contained modules take you from the mathematics the questions rest on, through
-PyTorch as the working language, through how models are trained, scaled, served and aligned, down
-to CUDA at the level below the framework.
+A friend of mine asked me what he needs to learn to pass an interview as a junior AI researcher at one of the big AI labs. I liked the question and in the process of putting it together I kept running into really fun problems like these ones: 
 
-Each module is an article that explains the topic, a further reading list that says which paper to
-open first and why, and a programming exercise that grades itself.
+- How do you train a large language model with billions of parameters if you can't even fit it in memory? [04 - ML System Design](04-ml-system-design/) 
+- What algorithms and communication patterns are used distribute inference efficiently across many cluster nodes? [05 - Inference Optimisation](05-inference-optimization/) 
+- How do you write and optimize a CUDA kernel from scratch? [09 - CUDA and cuBLAS](09-cuda-and-cublas/)
 
-Every claim in every article is either derived or measured. Every exercise checks itself.
+# What's Inside the Repo?
+The curriculum covers the core pillars every modern AI researcher needs in their toolkit: Math, Coding, AI Training, and GPU Programming.
+
+# How Each Module is Structured
+Every topic follows a practical flow designed to take you from conceptual understanding to implementation:
+
+- **The Article:** A clear, deep-dive read explaining the core concepts, math, and architecture behind the topic.
+- **The Practice Notebook:** Real, hands-on code using approachable toy examples so you can experiment and see how things work under the hood.
+Quick note: Almost everything runs smoothly on a standard CPU so you can experiment anywhere. The only exception is the CUDA module, where you'll want a GPU to explore low-level coding
+- **Further Reading:** A curated reading list at the end of each article to guide your journey if you want to dive even deeper down the rabbit hole.
+
+
 
 ---
 
@@ -164,29 +173,3 @@ The checks are the pedagogy. They are written to fail for a *reason* rather than
   advantage converges to a constant rather than growing with sequence length; module 08 shows the
   robustness/accuracy trade-off is conditional on whether the fragile features are predictive.
   Being able to state those precisely is what the interview is actually testing.
-
----
-
-## Status
-
-All ten articles and exercises are complete, and every `solution.py` passes on CPU:
-
-| module | checks |
-|---|---|
-| 00 pytorch-basics | 26 |
-| 01 math-foundations | 31 |
-| 02 ml-coding-from-scratch | 22 |
-| 03 ml-debugging | 9 (2/9 on the un-fixed model, by design) |
-| 04 ml-system-design | 44 |
-| 05 inference-optimization | 26 |
-| 06 rag-systems | 29 |
-| 07 research-paper-analysis | 30 |
-| 08 ai-safety-alignment | 30 |
-| 09 cuda-and-cublas | 25 (the GPU-free half) |
-| 10 mixture-of-experts | 26 |
-
-The CUDA sources in `09-cuda-and-cublas/kernels/` have **not** been compiled or run — this machine
-has the CUDA toolkit but no host C++ compiler. Their index arithmetic *is* verified: module 09's
-notebook emulates the exact indexing of the tiled GEMM, the register-tiled GEMM and the fused
-attention kernel in numpy and checks them against reference results. Treat the timing tables as
-untested and the algorithms as verified.
