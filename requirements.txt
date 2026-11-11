@@ -4,4 +4,13 @@ torch>=2.1
 numpy>=1.24
 # Only needed to open the generated notebooks; the .py exercises run without it.
 jupyter>=1.0
+# Below 2.21.1, every static file 500s when tornado is 6.5 or newer. Tornado moved
+# symlink validation into StaticFileHandler.initialize, and jupyter_server's
+# FileFindHandler overrides initialize, so the attribute that validation reads is
+# never set. The symptom is confusing: the server starts, the page returns 200, and
+# the browser shows a blank screen, because none of the JavaScript ever loads.
+jupyter-server>=2.21.1
+# PROGRESS.ipynb builds its tick boxes from ipywidgets. The jupyter metapackage
+# happens to pull it in, but a direct import deserves a direct requirement.
+ipywidgets>=8.1
 matplotlib>=3.7
